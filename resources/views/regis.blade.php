@@ -36,23 +36,55 @@
                     <label for="email" class="absolute left-4 top-2 text-sm text-white/50">Email</label>
                     <input type="text" id="email" name="email" autofocus
                         class="pt-7 pb-2 px-4 w-full caret-white bg-white/10 rounded-xs outline-none border-l-3 border-[#424762] focus:border-[#f4b27e] transition duration-200">
-                    @error('email') <p class="text-red-500"> {{ $message }} </p> @enderror
                 </div>
+                @error('email') <p class="text-red-500"> {{ $message }} </p> @enderror
                 
                 <div class="relative">
                     <label for="pw" class="absolute left-4 top-2 text-sm text-white/50">Password</label>
                     <input type="password" id="pw" name="password"
                         class="pt-7 pb-2 px-4 w-full caret-white bg-white/10 rounded-xs outline-none border-l-3 border-[#424762] focus:border-[#f4b27e] transition duration-200">
-                    @error('password') <p class="text-red-500"> {{ $message }} </p> @enderror
+                    <button type="button" onclick="showPw()" class="absolute top-1/2 -translate-1/2 right-0" tabindex="-1">
+                        <svg id="show" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                        <svg id="hide" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>
+                    </button>
                 </div>
+                @error('password') <p class="text-red-500"> {{ $message }} </p> @enderror
                 
                 <div class="relative">
                     <label for="pw" class="absolute left-4 top-2 text-sm text-white/50">Confirm Password</label>
-                    <input type="password" id="pw" name="password_confirmation"
+                    <input type="password" id="pw2" name="password_confirmation"
                         class="pt-7 pb-2 px-4 w-full caret-white bg-white/10 rounded-xs outline-none border-l-3 border-[#424762] focus:border-[#f4b27e] transition duration-200">
-                    @error('password_confirmation') <p class="text-red-500"> {{ $message }} </p> @enderror
+                    <button type="button" onclick="showPw2()" class="absolute top-1/2 -translate-1/2 right-0" tabindex="-1">
+                        <svg id="show2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                        <svg id="hide2" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>
+                    </button>
                 </div>
+                @error('password_confirmation') <p class="text-red-500"> {{ $message }} </p> @enderror
             </div>
+
+            <script>
+                const iconShow = document.getElementById('show');
+                const iconHide = document.getElementById('hide');
+
+                function showPw() {
+                    const input = document.getElementById('pw')
+                    input.type = input.type === 'password' ? 'text' : 'password'
+
+                    iconShow.classList.toggle('hidden')
+                    iconHide.classList.toggle('hidden')
+                }
+
+                const iconShow2 = document.getElementById('show2');
+                const iconHide2 = document.getElementById('hide2');
+
+                function showPw2() {
+                    const input = document.getElementById('pw2')
+                    input.type = input.type === 'password' ? 'text' : 'password'
+
+                    iconShow2.classList.toggle('hidden')
+                    iconHide2.classList.toggle('hidden')
+                }
+            </script>
             
             <div class="flex justify-between mb-8">
                 <div class="flex gap-2">
